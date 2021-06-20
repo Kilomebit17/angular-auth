@@ -1,0 +1,44 @@
+.news {
+  padding: 48px;
+  background-color: #fff;
+  text-align: center;
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  &__inner {
+    display: grid;
+    text-align: left;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    margin-bottom: 20px;
+  }
+
+  &__card {
+    padding: 0 15px;
+
+    h1 {
+      color: #4ec0b4;
+      border-left: 3px solid #4ec0b4;
+      padding-left: 15px;
+      font-weight: 600;
+      min-height: 160px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      transition: all .5s linear;
+      cursor: pointer;
+
+      &:hover {
+        color: #2a3a4a;
+        border-left: 3px solid #2a3a4a;
+      }
+    }
+
+    span {
+      text-align: left;
+      font-size: 1rem;
+      font-family: 'Comfortaa', cursive;
+    }
+  }
+}

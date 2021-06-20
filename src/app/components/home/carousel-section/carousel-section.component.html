@@ -1,0 +1,7 @@
+<div class="carousell">
+  <carousel loop="true" style="min-height: 300px" cellsToScroll="3" [overflowCellsLimit]="fiveNum">
+    <div class="carousel-cell" *ngFor="let slide of slides" >
+      <app-carousel-card [img]="slide.img" [description]="slide.description"></app-carousel-card>
+    </div>
+  </carousel>
+</div>

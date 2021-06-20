@@ -1,0 +1,60 @@
+.history {
+  background-color: #ebedf1;
+  padding: 48px;
+  text-align: left;
+
+  .btn {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      margin-top: 17px;
+    }
+  }
+
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__card {
+    max-width: 33.333333%;
+    padding: 0 10px;
+    margin: 0 10px;
+
+    span {
+      display: block;
+      text-align: left;
+      font-size: 1rem;
+      color: #2a3a4a;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+    }
+
+    div {
+      font-family: 'Roboto', sans-serif;
+      text-align: left;
+      margin: 10px 0;
+      font-weight: 500;
+      font-size: 1rem;
+    }
+
+    h3 {
+      border-left: 3px solid;
+      border-color: inherit;
+      padding-left: 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-size: 1.8rem;
+      letter-spacing: 1.2px;
+    }
+
+    img {
+      width: 400px;
+      height: 227px;
+    }
+  }
+}

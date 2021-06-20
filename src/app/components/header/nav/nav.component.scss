@@ -1,0 +1,19 @@
+nav {
+  display: flex;
+  align-items: center;
+  a {
+    span {
+      padding:0 2.5px;
+    }
+    margin-right:15px;
+    text-transform: uppercase;
+    color: #2a3a4a;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: color .2s linear;
+
+    &:hover {
+      color: #4ec0b4;
+    }
+  }
+}

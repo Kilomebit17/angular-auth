@@ -1,0 +1,26 @@
+.card {
+  border: 1px solid #fff;
+  margin: 0 10px;
+  text-align: left;
+  min-height: 260px;
+  border-radius:10px;
+  &__img {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    background-color: #90959b;
+    margin-bottom: 1rem;
+    img {
+      filter: brightness(0) invert(1);
+      padding:10px 0;
+      width: 100px;
+    }
+  }
+  &__description {
+    padding: 1rem;
+    text-align: left;
+    span {
+      color: #90959b;
+    }
+  }
+}
