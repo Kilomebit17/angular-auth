@@ -15,8 +15,16 @@ import {NewsSectionComponent} from './components/home/news-section/news-section.
 import {CarouselSectionComponent} from './components/home/carousel-section/carousel-section.component';
 import {CarouselCardComponent} from './components/home/carousel-section/carousel-card/carousel-card.component';
 import {IvyCarouselModule} from 'angular-responsive-carousel';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FooterComponent} from "./components/footer/footer.component";
+import {RegisterFormComponent} from './components/auth/register-form/register-form.component';
+import {LoginFormComponent} from './components/auth/login-form/login-form.component';
+import {ReactiveFormsModule} from "@angular/forms";
+import {AngularFireModule} from "@angular/fire";
+import {environment} from "../environments/environment";
+import {AuthService} from "./components/auth/auth.service";
+import {NotFound404Component} from './components/not-found404/not-found404.component';
+import {AngularFireAuthModule} from "@angular/fire/auth";
 
 @NgModule({
   declarations: [
@@ -31,16 +39,23 @@ import {FooterComponent} from "./components/footer/footer.component";
     NewsSectionComponent,
     CarouselSectionComponent,
     CarouselCardComponent,
-    FooterComponent
+    FooterComponent,
+    RegisterFormComponent,
+    LoginFormComponent,
+    NotFound404Component
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     IvyCarouselModule,
-    NgbModule
+    NgbModule,
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
