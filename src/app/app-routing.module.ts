@@ -4,9 +4,10 @@ import {HomeComponent} from "./components/home/home.component";
 import {LoginFormComponent} from "./components/auth/login-form/login-form.component";
 import {RegisterFormComponent} from "./components/auth/register-form/register-form.component";
 import {NotFound404Component} from "./components/not-found404/not-found404.component";
+import {AuthGuard} from "./components/auth/auth.guard";
 
 const routes: Routes = [
-  {path: '', component: HomeComponent},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path:'login', component: LoginFormComponent},
   {path:'registration', component: RegisterFormComponent},
   {path:'**', component:NotFound404Component},

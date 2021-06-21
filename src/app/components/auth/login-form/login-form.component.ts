@@ -21,6 +21,9 @@ export class LoginFormComponent implements OnInit {
   loginWithGoogle() {
     this.auth.googleSignIn()
   }
+  // loginWithGitHub() {
+  //   this.auth.githubSignIn()
+  // }
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -37,7 +40,7 @@ export class LoginFormComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
+    this.auth.signIn(this.f.email.value,this.f.password.value)
     console.log('login work', this.f.email.value, this.f.password.value)
   }
 }

@@ -6,8 +6,8 @@
         <app-nav></app-nav>
       </div>
       <div *ngIf="newUser; else authLogin" style="display: flex; padding:0 10px; align-items: center">
-        <img src="{{newUser.photoURL}}" alt="photo" style="width: 34px; border-radius: 25%; margin-right: 5px">
-        <span style="font-size: 1rem; font-weight: 600">{{newUser.displayName}}</span>
+        <img src="{{newUser?.photoURL || ifPhotoNotFound}}" alt="user photo" style="width: 34px; border-radius: 25%; margin-right: 5px">
+        <span style="font-size: 1rem; font-weight: 600">{{newUser?.displayName || newUser?.email}}</span>
         <div class="login">
           <button class="signInBtn" (click)="auth.signOut()">Sign Out</button>
         </div>
