@@ -53,8 +53,33 @@
     }
 
     img {
-      width: 400px;
+      //width: 400px;
       height: 227px;
+    }
+  }
+}
+@media (max-width: 1024px) {
+  .history {
+    &__inner {
+      justify-content: space-around;
+    }
+    &__card {
+
+    }
+  }
+}
+@media (max-width: 768px) {
+  .history {
+    padding:20px 0;
+    &__inner {
+      justify-content: center;
+    }
+    &__card {
+      max-width: 100%;
+      margin-top: 20px;
+      img {
+        width: 100%;
+      }
     }
   }
 }

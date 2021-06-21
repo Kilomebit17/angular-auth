@@ -42,3 +42,15 @@
     }
   }
 }
+@media (max-width: 768px) {
+  .news {
+    &__inner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    &__card {
+      margin:20px 0;
+    }
+  }
+}

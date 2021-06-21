@@ -81,3 +81,32 @@
   }
 }
 
+@media (max-width: 768px) {
+  .search {
+    .description {
+      text-align: left;
+      background: #afb6bf;
+      h1 {
+        font-size: 2rem;
+      }
+    }
+    &__section {
+      label {
+        input {
+          border-radius: 20px;
+          padding: 10px;
+          font-weight: 600;
+          color: #2a3a4a;
+          outline: none;
+          background: none;
+          font-size: 1.5rem;
+          width: 100%;
+          border: 2px solid #2a3a4a;
+        }
+      }
+    }
+    &__nav {
+      flex-wrap: wrap;
+    }
+  }
+}

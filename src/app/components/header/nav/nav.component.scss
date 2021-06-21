@@ -17,3 +17,9 @@ nav {
     }
   }
 }
+@media (max-width: 425px) {
+  nav {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
