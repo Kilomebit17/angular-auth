@@ -1,9 +1,8 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
-import {AppRoutingModule} from './app-routing.module';
+import {AppRoutingModule, routerComponents} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {HomeComponent} from './components/home/home.component';
 import {HeaderComponent} from './components/header/header.component';
 import {NavComponent} from './components/header/nav/nav.component';
 import {PickServiceComponent} from './components/home/pick-service/pick-service.component';
@@ -17,19 +16,20 @@ import {CarouselCardComponent} from './components/home/carousel-section/carousel
 import {IvyCarouselModule} from 'angular-responsive-carousel';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {FooterComponent} from "./components/footer/footer.component";
-import {RegisterFormComponent} from './components/auth/register-form/register-form.component';
-import {LoginFormComponent} from './components/auth/login-form/login-form.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {AngularFireModule} from "@angular/fire";
 import {environment} from "../environments/environment";
 import {AuthService} from "./components/auth/auth.service";
-import {NotFound404Component} from './components/not-found404/not-found404.component';
 import {AngularFireAuthModule} from "@angular/fire/auth";
+import {MatDialogModule} from '@angular/material/dialog';
+import { UserShouldToLoginComponent } from './components/Dialogs/user-should-to-login/user-should-to-login.component';
+import {MatButtonModule} from '@angular/material/button';
+import { ErrorsComponent } from './components/Dialogs/errors/errors.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     HeaderComponent,
     NavComponent,
     PickServiceComponent,
@@ -40,9 +40,9 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
     CarouselSectionComponent,
     CarouselCardComponent,
     FooterComponent,
-    RegisterFormComponent,
-    LoginFormComponent,
-    NotFound404Component
+    routerComponents,
+    UserShouldToLoginComponent,
+    ErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +53,8 @@ import {AngularFireAuthModule} from "@angular/fire/auth";
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    MatDialogModule,
+    MatButtonModule
 
   ],
   providers: [AuthService],

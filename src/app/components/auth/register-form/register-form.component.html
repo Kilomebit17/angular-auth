@@ -1,40 +1,36 @@
-<div class="form-block">
-  <form [formGroup]="registerForm" style="padding: 1rem" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" id="email" formControlName="email" class="form-control"
-             [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
-      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-        <div *ngIf="f.email.errors.required">Email is required</div>
+<div class="login">
+  <div class="form">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" formControlName="email" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+          <div *ngIf="f.email.errors.required">Email is required</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" id="password" formControlName="password" class="form-control"
-             [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-        <div *ngIf="f.password.errors.required">Password is required</div>
-        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-        <div *ngIf="auth.wrongMess">{{errorMess}}</div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" class="form-control"
+               [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
+        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+          <div *ngIf="f.password.errors.required">Password is required</div>
+          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+          <div *ngIf="auth.wrongMess">{{errorMess}}</div>
+        </div>
       </div>
-    </div>
-    <div class="form-group" style="display: flex; flex-direction: column">
-      <button [disabled]="loading" class="btn btn-primary">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        Register
-      </button>
-    </div>
-  </form>
-  <button class="btn btn-dark" style="display: inline-block; margin-left: 1rem" (click)="loginWithGoogle()">
-    <img
-    src="assets/media/free-icon-google-300221.png"
-    alt="google icon"
-    style="width: 24px;">
-  </button>
-<!--  <button class="btn btn-dark" style="display: inline-block; margin-left: 1rem" (click)="loginWithGitHub()">Login-->
-<!--    with GitHub-->
-<!--  </button>-->
-<!--  <button class="btn btn-dark" style="display: inline-block; margin-left: 1rem" (click)="loginWithFacebook()">Login-->
-<!--    with Facebook-->
-<!--  </button>-->
+      <div class="form-group" style="display: flex;">
+        <button [disabled]="loading">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Register
+        </button>
+        <button style="display: inline-block; margin-left: 1rem" (click)="loginWithGoogle()">
+          <img
+            src="assets/media/free-icon-google-300221.png"
+            alt="google icon"
+            style="width: 24px;">
+        </button>
+      </div>
+    </form>
+  </div>
 </div>

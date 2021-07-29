@@ -1,7 +1,7 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, Validators, FormGroup} from "@angular/forms";
-import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {AuthService} from "../auth.service";
+import {fromEvent} from "rxjs";
 
 @Component({
   selector: 'app-login-form',
@@ -43,4 +43,5 @@ export class LoginFormComponent implements OnInit {
     this.auth.signIn(this.f.email.value,this.f.password.value)
     console.log('login work', this.f.email.value, this.f.password.value)
   }
+
 }

@@ -4,13 +4,16 @@ import { Observable } from 'rxjs';
 import {AuthService} from "./auth.service";
 import {map, take, tap} from "rxjs/operators";
 import {loggedIn} from "@angular/fire/auth-guard";
+import {MatDialog} from "@angular/material/dialog";
+import {UserShouldToLoginComponent} from "../Dialogs/user-should-to-login/user-should-to-login.component";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
   constructor(private auth:AuthService,
-              private router:Router) {
+              private router:Router,
+              private dialog: MatDialog) {
   }
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -20,8 +23,8 @@ export class AuthGuard implements CanActivate {
       map(user => !!user),
       tap(loggedIn => {
         if (!loggedIn) {
-          this.router.navigate(['/login'])
-          alert('Вы должны войти или зарегистрироваться')
+          this.dialog.open(UserShouldToLoginComponent)
+          // this.router.navigate(['/login'])
         }
       })
     )
