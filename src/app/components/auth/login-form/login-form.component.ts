@@ -1,7 +1,6 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, Validators, FormGroup} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, Validators, FormGroup, FormControl} from "@angular/forms";
 import {AuthService} from "../auth.service";
-import {fromEvent} from "rxjs";
 
 @Component({
   selector: 'app-login-form',
@@ -9,7 +8,7 @@ import {fromEvent} from "rxjs";
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit {
-  loginForm: FormGroup;
+  form: FormGroup;
   loading = false;
   submitted = false;
 
@@ -21,27 +20,23 @@ export class LoginFormComponent implements OnInit {
   loginWithGoogle() {
     this.auth.googleSignIn()
   }
-  // loginWithGitHub() {
-  //   this.auth.githubSignIn()
-  // }
+
   ngOnInit(): void {
-    this.loginForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+    this.form = new FormGroup({
+      email: new FormControl(null, Validators.required),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+    })
   }
 
-  get f() {
-    return this.loginForm.controls;
-  }
 
   onSubmit() {
     this.submitted = true;
-    if (this.loginForm.invalid) {
-      return;
+
+    const userLogin = {
+      email:this.form.value.email,
+      password:this.form.value.password
     }
-    this.auth.signIn(this.f.email.value,this.f.password.value)
-    console.log('login work', this.f.email.value, this.f.password.value)
+    this.auth.signIn(userLogin)
   }
 
 }

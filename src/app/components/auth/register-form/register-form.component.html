@@ -1,26 +1,30 @@
 <div class="login">
   <div class="form">
-    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email</label>
         <input type="text" id="email" formControlName="email" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
-        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-          <div *ngIf="f.email.errors.required">Email is required</div>
+               [ngClass]="{ 'is-invalid': form.get('email').invalid && form.get('email').touched }"/>
+        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="invalid-feedback">
+          <div *ngIf="form.get('email').errors['required']">Email is required</div>
         </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
         <input type="password" id="password" formControlName="password" class="form-control"
-               [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
-        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-          <div *ngIf="f.password.errors.required">Password is required</div>
-          <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-          <div *ngIf="auth.wrongMess">{{errorMess}}</div>
+               [ngClass]="{ 'is-invalid': form.get('password').invalid && form.get('password').touched}"/>
+
+        <div *ngIf="form.get('password').invalid && form.get('password').touched" class="invalid-feedback">
+          <span *ngIf="form.get('password').errors['required']">Password is required</span>
+          <span
+            *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">Password should be min {{form.get('password').errors['minlength']['requiredLength']}}
+            symbols.
+        Right now {{form.get('password').errors['minlength']['actualLength']}}
+        </span>
         </div>
       </div>
       <div class="form-group" style="display: flex;">
-        <button [disabled]="loading">
+        <button [disabled]="form.invalid">
           <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
           Register
         </button>

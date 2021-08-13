@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {NgbActiveModal} from "@ng-bootstrap/ng-bootstrap";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
@@ -10,46 +10,33 @@ import {Router} from "@angular/router";
   styleUrls: ['./register-form.component.scss']
 })
 export class RegisterFormComponent implements OnInit {
-  registerForm: FormGroup;
+  form: FormGroup;
   loading = false;
   submitted = false;
   errorMess: string
 
-  constructor(private formBuilder: FormBuilder,
-              public auth: AuthService) {
+  constructor(
+    public auth: AuthService) {
   }
 
   ngOnInit(): void {
-    this.registerForm = this.formBuilder.group({
-      email: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]]
-    });
+    this.form = new FormGroup({
+      email: new FormControl(null, Validators.email),
+      password: new FormControl(null, [Validators.required, Validators.minLength(6)])
+    })
   }
 
-  get f() {
-    return this.registerForm.controls;
-  }
 
   onSubmit() { //* submit form
     this.submitted = true;
-    if (this.registerForm.invalid) {
-      return;
-    }
+
     this.loading = true;
-    if (window.alert) {
-      this.loading = false;
-    }
-    this.auth.signUp(this.registerForm.value)
+
+    this.auth.signUp(this.form.value)
   }
 
   loginWithGoogle() {
     this.auth.googleSignIn()
   }
 
-  // loginWithGitHub() {
-  //   this.auth.githubSignIn()
-  // }
-  // loginWithFacebook() {
-  //   this.auth.facebookSignIn()
-  // }
 }

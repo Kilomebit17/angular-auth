@@ -1,5 +1,5 @@
 .service {
-  background-image: url("~src/assets/media/main_short.jpg");
+  background-image: url("../../../../assets/media/main_short.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -113,7 +113,7 @@
       display: flex;
       flex-direction: column;
       .service__comfortable {
-        background-image: url("~src/assets/media/main_short.jpg");
+        background-image: url("../../../../assets/media/main_short.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         width: 100%;
