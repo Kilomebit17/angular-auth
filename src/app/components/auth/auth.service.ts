@@ -28,7 +28,7 @@ export class AuthService {
 
 
   async signIn({email, password}) { //! вход чере почту
-    await this.afAuth.signInWithEmailAndPassword(email, password)
+    await this.afAuth.signInWithEmailAndPassword(email + '', password)
       .then(res => res)
       .catch(err => {
         this.wrongMess = err.message
@@ -38,7 +38,7 @@ export class AuthService {
   }
 
   async signUp({email, password}) { //! регестрация через почту
-    await this.afAuth.createUserWithEmailAndPassword(email, password)
+    await this.afAuth.createUserWithEmailAndPassword(email + '', password)
       .then(res => res)
       .catch(err => {
         this.wrongMess = err.message
