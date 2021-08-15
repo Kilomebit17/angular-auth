@@ -3,36 +3,73 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <div class="form-group">
         <label for="email">Email</label>
-        <input type="text" id="email" formControlName="email" class="form-control"
-               [ngClass]="{ 'is-invalid': form.get('email').invalid && form.get('email').touched }"/>
-        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="invalid-feedback">
-          <div *ngIf="form.get('email').errors['required']">Email is required</div>
+        <input
+          type="text"
+          id="email"
+          formControlName="email"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid': form.get('email').invalid && form.get('email').touched
+          }"
+        />
+        <div
+          *ngIf="form.get('email').invalid && form.get('email').touched"
+          class="invalid-feedback"
+        >
+          <span *ngIf="form.get('email').errors['required']">
+            Email is required</span
+          >
         </div>
       </div>
       <div class="form-group">
         <label for="password">Password</label>
-        <input type="password" id="password" formControlName="password" class="form-control"
-               [ngClass]="{ 'is-invalid': form.get('password').invalid && form.get('password').touched}"/>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          class="form-control"
+          [ngClass]="{
+            'is-invalid':
+              form.get('password').invalid && form.get('password').touched
+          }"
+        />
 
-        <div *ngIf="form.get('password').invalid && form.get('password').touched" class="invalid-feedback">
-          <span *ngIf="form.get('password').errors['required']">Password is required</span>
+        <div
+          *ngIf="form.get('password').invalid && form.get('password').touched"
+          class="invalid-feedback"
+        >
+          <span *ngIf="form.get('password').errors['required']"
+            >Password is required</span
+          >
           <span
-            *ngIf="form.get('password').errors['minlength'] && form.get('password').errors['minlength']['requiredLength']">Password should be min {{form.get('password').errors['minlength']['requiredLength']}}
-            symbols.
-        Right now {{form.get('password').errors['minlength']['actualLength']}}
-        </span>
+            *ngIf="
+              form.get('password').errors['minlength'] &&
+              form.get('password').errors['minlength']['requiredLength']
+            "
+            >Password should be min
+            {{ form.get("password").errors["minlength"]["requiredLength"] }}
+            symbols. Right now
+            {{ form.get("password").errors["minlength"]["actualLength"] }}
+          </span>
         </div>
       </div>
-      <div class="form-group" style="display: flex;">
+      <div class="form-group" style="display: flex">
         <button [disabled]="form.invalid">
-          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          <span
+            *ngIf="loading"
+            class="spinner-border spinner-border-sm mr-1"
+          ></span>
           Register
         </button>
-        <button style="display: inline-block; margin-left: 1rem" (click)="loginWithGoogle()">
+        <button
+          style="display: inline-block; margin-left: 1rem"
+          (click)="loginWithGoogle()"
+        >
           <img
             src="assets/media/free-icon-google-300221.png"
             alt="google icon"
-            style="width: 24px;">
+            style="width: 24px"
+          />
         </button>
       </div>
     </form>
