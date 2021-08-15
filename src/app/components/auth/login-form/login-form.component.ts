@@ -17,8 +17,10 @@ export class LoginFormComponent implements OnInit {
   loading = false;
   submitted = false;
 
-  constructor(private formBuilder: FormBuilder, public auth: AuthService) {}
-  loginWithGoogle() {}
+  constructor(public auth: AuthService) {}
+  loginWithGoogle() {
+    this.auth.googleSignIn();
+  }
 
   ngOnInit(): void {
     this.form = new FormGroup({
